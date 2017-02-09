@@ -23,6 +23,7 @@ public abstract class Scheduler {
         beforeStart = new HashMap<>();
         current = null;
         algorithm = algo;
+        ticks = 0;
         load(filename);
     }
 
@@ -60,7 +61,7 @@ public abstract class Scheduler {
 
         try {
             Scanner sc = new Scanner(new File(filename));
-            sc.useDelimiter(", |\n");
+            sc.useDelimiter(", |,|\n");
 
             while (sc.hasNext()) {
 

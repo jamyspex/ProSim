@@ -26,9 +26,6 @@ public class RRScheduler extends Scheduler {
                 beforeStart.remove(ticks);
             }
 
-            ticks++;
-            currentTicks++;
-
             if (current == null) {
                 current = waiting.remove();
                 current.run();
@@ -46,7 +43,11 @@ public class RRScheduler extends Scheduler {
                 current.pause();
                 waiting.add(current);
                 current = null;
+                currentTicks = 0;
             }
+
+            ticks++;
+            currentTicks++;
 
         } while (!waiting.isEmpty() || !beforeStart.keySet().isEmpty() || current != null);
 
