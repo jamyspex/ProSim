@@ -1,4 +1,6 @@
 /**
+ * Generates a Process work load and writes them to a file
+ * Based on supplied Generator.java
  * Created by james on 02/02/17.
  */
 
@@ -19,6 +21,7 @@ public class ProcessGenerator {
         int poissonValue = 0;
         int gaussianValue;
 
+        // create processes with sequential id, Gaussian CBT and poisson AAT
         for (int i = 0; i < n; i++) {
 
             gaussianValue = (int) Math.ceil(random.nextGaussian() * STD1 + M1);
@@ -33,6 +36,7 @@ public class ProcessGenerator {
 
         try {
 
+            // write list of processes to file
             FileWriter file = new FileWriter(filename, false);
             PrintWriter out = new PrintWriter(file);
 
@@ -51,6 +55,7 @@ public class ProcessGenerator {
         }
     }
 
+    // provided Poisson generator
     public static int myPoisson(double mean, Random random, int previous) {
         int k = 0;
         double p = 1.0;
